@@ -34,3 +34,6 @@ iu-demultiplex -s barcode_to_sample.txt --r1 Undetermined_S0_L001_R1_001.fastq -
 
 iu-gen-configs 00_DEMULTIPLEXING_REPORT
 ```
+
+## 4. Merging partially overlapping paired reads
+

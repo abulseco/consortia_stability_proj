@@ -7,6 +7,7 @@ This code is specific to an undergraduate Metcalf research project that aims to 
 ## 1. Requirements for this workflow
 * Illumina-utils found [here](https://github.com/merenlab/illumina-utils) 
 * Oligotyping pipeline found [here](http://merenlab.org/2014/08/16/installing-the-oligotyping-pipeline/)
+* Levenshtein module found [here](https://pypi.org/project/python-Levenshtein/)
 * Download data and associated mapping file (available in this repo) 
 
 To download Illumina-utils: 
@@ -16,6 +17,10 @@ pip install illumina-utils
 To download oligotyping pipeline:
 ```
 sudo pip install oligotyping
+```
+To download Levenshtein module
+```
+pip install python-levenshtein
 ```
 
 ## 2. Make a working directory

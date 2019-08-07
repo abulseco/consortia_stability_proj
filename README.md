@@ -28,6 +28,7 @@ mkdir demultiplex # to put demultiplexed data in
 ```
 
 ## 3. Demultiplex your data
+*Note: This may have already been done for you prior to receiving the data, but you can practice this step if you would like*
 The demultiplexing step allows you to reference what sequences came from which samples using unique barcodes ligated to each individual sample. This is important, because all of your samples had to be sequenced together. The "barcode_to_sample.txt" mapping file provides this information. After demultiplexing, you can then generate a report that provides information on which paired reads go together. 
 ```
 iu-demultiplex -s barcode_to_sample.txt --r1 Undetermined_S0_L001_R1_001.fastq --r2 Undetermined_S0_L001_R2_001.fastq --index Undetermined_S0_L001_I1_001.fastq -o demultiplexed -x 

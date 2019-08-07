@@ -9,4 +9,25 @@ This code is specific to an undergraduate Metcalf research project that aims to 
 * Oligotyping pipeline found [here](http://merenlab.org/2014/08/16/installing-the-oligotyping-pipeline/)
 * Download data and associated mapping file (available in this repo) 
 
-## 2. 
+To download Illumina-utils: 
+```
+pip install illumina-utils
+```
+To download oligotyping pipeline:
+```
+sudo pip install oligotyping
+```
+
+## 2. Make a working directory
+In this case, the working directory is within the documents folder, which can be changed according to your needs. You should put your mapping file (barcode_to_sample.txt) and sequence data (RAW_data folder) located in this repo, and navigate to that folder.  
+```
+mkdir ~/Documents/consortia_med
+cd ~/Documents/consortia_med
+ls # to make sure your data and mapping file are located in the correct folder
+mkdir demultiplex # to put demultiplexed data in
+```
+
+## 3. Demultiplex your data
+```
+iu-demultiplex -s barcode_to_sample.txt --r1 Undetermined_S0_L001_R1_001.fastq --r2 Undetermined_S0_L001_R2_001.fastq --index Undetermined_S0_L001_I1_001.fastq -o demultiplexed -x 
+```

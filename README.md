@@ -1,6 +1,6 @@
 # Consortia Stability Project (Metcalf 2019)
 
-#### Updated 08/06/2019 - Ashley Bulseco
+#### Updated 08/06/2019 - Ashley Bulseco (with contributions from [Joe Vineis](https://github.com/jvineis))
 
 This code is specific to an undergraduate Metcalf research project that aims to investigate the stability of a microbial consortia isolated from salt marsh sediments over time. This work is in collaboration with [J. Bowen](https://jb2032.wixsite.com/bowenlab) and [J. Vineis](https://github.com/jvineis) of Northeastern University. This workflow uses Illumina-utils and resolves nodes using minimum entropy decomposition from [Eren et al. 2015](https://www.nature.com/articles/ismej2014195). 
 

@@ -43,4 +43,30 @@ iu-gen-configs 00_DEMULTIPLEXING_REPORT
 ```
 
 ## 4. Merging partially overlapping paired reads
+The iu-merge-pairs function will merge overlapping reads and the enforce-Q30-check will trim low quality scores on the non-overlapping part of the reads. Note that if your fragments are larger and the paired end reads do not overlap, then the reads will stay independent and you will have to do your own quality trimming.
+
+The merging is only working for overlapping reads, which is what we are doing today. However if the merging doesn't happen because the pairs don't overlap, then you would just use quality filtering and visualize with iu-filter-quality-minoche, there is also iu-filter-quality-bokulich from the illumina-utils. We aren't doing this today because we will be merging. enforce-Q30-check is looking at quality on the ends, not just where the reads are overlapping. 
+```
+ls *.ini | sed 's/\.ini//g' > samples.txt  # "ls" lists all file that end with an .ini, "sed" is a find and replace tool, and the ">" creates a new file. We are finding "*\.ini" and replacing it with "", use forward slash before because unix hates dots
+
+gunzip *.ini # we have to unzip the fastq files to run the following code
+
+screen # opening a screen will allow merging to happen in the background even if your computer falls asleep
+
+for i in `cat samples.txt`; do iu-merge-pairs $i'.ini' -o $i'-merged' --enforce-Q30-check; done
+```
+Then you can use "more" or "head" to look at the files containing the produced stats. The following outlines some of the potential read outcomes:
+* FAILED are reads that failed to merge
+* FAILED_Q30 are reads that failed quality check
+* FAILED_WITH_Ns whether you get rid of reads with Ns
+* MERGED success! If you inspect this file, you will see that it specifies the number of mismatches for a single read. If there is a mismatch, it takes the read for which the quality score is highest. The stats file gives more information.
+* MISMATCHES_BREAKDOWN mismatches found in merged region between reads
+
+## 5. Filter out merged reads that have more than three mismatches
+This will result in a directory with data that have been merged and quality filtered. The next step is to use MED.
+```
+for i in `cat samples.txt`; do iu-filter-merged-reads $i'-merged_MERGED' -m 3; done
+```
+
+
 
